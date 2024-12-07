@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Binary Search Tree Result</h1>
+<div id="treeContainer"></div>
+<button onclick="window.location.href='index.html'">Back</button>
+<script>
+    // Fetch tree data from the backend
+    async function fetchTree() {
+        const response = await fetch('/tree-result'); // Update backend endpoint as needed
+        if (response.ok) {
+            const treeData = await response.json();
+            renderTree(treeData);
+        } else {
+            document.getElementById('treeContainer').innerText = 'Error fetching tree data';
+        }
+    }
+
+    // Render the tree data in a preformatted JSON block
+    function renderTree(tree) {
+        const container = document.getElementById('treeContainer');
+        container.innerHTML = `<pre>${JSON.stringify(tree, null, 2)}</pre>`;
+    }
+
+    fetchTree();
+</script>
+</body>
+</html>

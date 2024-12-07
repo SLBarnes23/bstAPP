@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Trees</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Previous Binary Search Trees</h1>
+<div id="previousTrees"></div>
+<button onclick="window.location.href='index.html'">Back</button>
+<script>
+    async function fetchPreviousTrees() {
+        const response = await fetch('/previous-trees'); // Backend endpoint
+        if (response.ok) {
+            const trees = await response.json();
+            renderPreviousTrees(trees);
+        } else {
+            document.getElementById('previousTrees').innerText = 'Error fetching previous trees';
+        }
+    }
+
+    function renderPreviousTrees(trees) {
+        const container = document.getElementById('previousTrees');
+        container.innerHTML = ''; // Clear container before adding new items
+        trees.forEach(tree => {
+            const treeDiv = document.createElement('div');
+            treeDiv.className = 'tree-item';
+            treeDiv.innerHTML = `
+                <p><strong>Numbers:</strong> ${tree.inputNumbers}</p>
+                <pre>${JSON.stringify(tree.treeStructure, null, 2)}</pre>
+            `;
+            container.appendChild(treeDiv);
+        });
+    }
+
+    fetchPreviousTrees();
+</script>
+</body>
+</html>

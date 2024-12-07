@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Tree App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Binary Search Tree Builder</h1>
+
+<!-- Form to submit input numbers -->
+<form id="buildTreeForm">
+    <label for="inputNumbers">Enter numbers (comma-separated):</label>
+    <input type="text" id="inputNumbers" placeholder="e.g., 10,5,15,3,7" required>
+    <button type="submit">Build Tree</button>
+</form>
+
+<hr>
+
+<!-- Section to display built tree -->
+<h2>Tree Details</h2>
+<div id="treeDetails"></div>
+
+<hr>
+
+<!-- Button to fetch all stored trees -->
+<h2>Stored Trees</h2>
+<button id="fetchTreesButton">Get All Trees</button>
+<div id="storedTrees"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
